@@ -61,7 +61,7 @@ export default {
       trouble: 10,
     };
     axios
-      .get("http://127.0.0.1:8000/expressions-in-category/", {
+      .get("https://kaiwa-backend.herokuapp.com/expressions-in-category/", {
         params: {
           key: category_name_to_id[this.$route.params.category],
         },
