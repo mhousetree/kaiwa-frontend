@@ -47,7 +47,7 @@ export default {
       result: "",
     };
   },
-  mounted() {
+  created() {
     const category_name_to_id = {
       greetings: 1,
       airport: 2,
@@ -61,7 +61,7 @@ export default {
       trouble: 10,
     };
     axios
-      .get("https://kaiwa-backend.herokuapp.com/expressions-in-category/", {
+      .get(process.env.VUE_APP_API_URL + "expressions-in-category/", {
         params: {
           key: category_name_to_id[this.$route.params.category],
         },
@@ -77,6 +77,8 @@ export default {
           console.log(error);
         }.bind(this)
       );
+  },
+  mounted() {
   },
   computed: {
     from_language() {

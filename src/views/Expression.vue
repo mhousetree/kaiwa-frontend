@@ -30,7 +30,7 @@ export default {
   },
   mounted() {
     axios
-      .get("https://kaiwa-backend.herokuapp.com/expression/", {
+      .get(process.env.VUE_APP_API_URL + "expression/", {
         params: {
           key: this.$route.params.expression_slug,
         },
