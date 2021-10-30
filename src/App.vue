@@ -1,7 +1,7 @@
 <template>
   <header>
     <router-link to="/">
-      <img src="@/assets/img/icons/kaiwa_icon.svg" alt="kaiwa logo" />
+      <img src="@/assets/img/icons/kaiwa_icon.png" alt="kaiwa logo" />
     </router-link>
     <!-- <button @click="toggle_mute" class="button_no-bg">
       <span v-if="is_muted" class="material-icons"> volume_off </span>
@@ -285,6 +285,9 @@ header {
   z-index: 2;
   a {
     width: min(30%, 150px);
+    img {
+      width: 100%;
+    }
   }
 }
 

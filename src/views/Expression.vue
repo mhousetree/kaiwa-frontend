@@ -2,7 +2,8 @@
   <div class="expression">
     <p id="breadcrumb">
       <router-link v-bind:to="'/' + category_id_to_slug(result.category_id)">
-        {{ category_id_to_jpname(result.category_id) }}
+        <span class="material-icons"> arrow_left </span
+        >{{ category_id_to_jpname(result.category_id) }}
       </router-link>
     </p>
     <h2>{{ result[from_language] }}</h2>
@@ -140,22 +141,23 @@ export default {
     top: 5.5rem;
     font-size: 1rem;
     a {
+      display: flex;
       z-index: 1;
       position: relative;
-      padding: 0.4rem 1rem 0.5rem 2rem;
+      padding: 0.4rem 1rem 0.5rem .5rem;
       color: inherit;
       text-decoration: none;
       border-radius: 1.5rem;
       box-shadow: 0 1px 3px #0003 inset;
 
-      &::before {
-        position: absolute;
-        top: 7px;
-        left: 0.5rem;
-        content: "\e5de";
-        font-family: "Material Icons";
-        font-size: 1.5rem;
-      }
+      // &::before {
+      //   position: absolute;
+      //   top: 7px;
+      //   left: 0.5rem;
+      //   content: "\e5de";
+      //   font-family: "Material Icons";
+      //   font-size: 1.5rem;
+      // }
     }
   }
 }
