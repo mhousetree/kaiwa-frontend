@@ -142,6 +142,7 @@ export default {
     font-size: 1rem;
     a {
       display: flex;
+      align-items: center;
       z-index: 1;
       position: relative;
       padding: 0.4rem 1rem 0.5rem .5rem;
