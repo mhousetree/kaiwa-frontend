@@ -49,7 +49,7 @@ export default {
   },
   created() {
     const category_name_to_id = {
-      greetings: 1,
+      basic: 1,
       airport: 2,
       change: 3,
       sightseeing: 4,
@@ -91,7 +91,7 @@ export default {
   methods: {
     category_slug_to_id(slug) {
       const categories = {
-        greetings: 1,
+        basic: 1,
         airport: 2,
         change: 3,
         sightseeing: 4,

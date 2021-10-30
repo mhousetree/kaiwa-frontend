@@ -2,7 +2,7 @@
   <div class="home">
     <ul id="category_list">
       <li>
-        <router-link to="/greetings">基本表現</router-link>
+        <router-link to="/basic">基本表現</router-link>
       </li>
       <li>
         <router-link to="/airport">空港</router-link>
@@ -54,7 +54,7 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 
   li {
-    box-shadow: 0 2px 3px #cccc;
+    box-shadow: 0 2px 3px #0003;
     border-radius: 0.3rem;
 
     a {
@@ -68,7 +68,7 @@ export default {
 
       // https://coolors.co/eef0f2-a4243b-c85f32-da7d2e-7e935b-0f8b8d-0d6195-0a369d-0f3670-143642
 
-      &[href="/greetings"] {
+      &[href="/basic"] {
         background-color: #eef0f2;
         color: $black;
       }

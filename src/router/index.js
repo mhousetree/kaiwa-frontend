@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Category from "../views/Category.vue";
 import Expression from "../views/Expression.vue";
+import Settings from "../views/Settings.vue";
 import Playlist from "../views/Playlist.vue";
 
 const routes = [
@@ -22,6 +23,10 @@ const routes = [
   {
     path: "/playlist",
     component: Playlist,
+  },
+  {
+    path: "/settings",
+    component: Settings,
   },
   {
     path: "/:category",

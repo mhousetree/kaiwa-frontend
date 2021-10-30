@@ -1,6 +1,7 @@
 <template>
   <div class="settings">
     <h2>設定</h2>
+    <button @click="toggle_color_mode">hoge</button>
     <!-- <dl id="expressions">
       <template v-for="expression in result" v-bind:key="expression.id">
         <dt>
@@ -35,9 +36,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
-// @ is an alias to /src
 export default {
   name: "Settings",
   data() {
@@ -45,78 +43,33 @@ export default {
       result: "",
     };
   },
-  mounted() {
-    const category_name_to_id = {
-      greetings: 1,
-      airport: 2,
-      change: 3,
-      sightseeing: 4,
-      transportation: 5,
-      hotel: 6,
-      restaurant: 7,
-      shopping: 8,
-      post_telephone: 9,
-      trouble: 10,
-    };
-    axios
-      .get(process.env.VUE_APP_API_URL + "expressions-in-category/", {
-        params: {
-          key: category_name_to_id[this.$route.params.category],
-        },
-      })
-      .then(
-        function (response) {
-          this.result = response.data;
-        }.bind(this)
-      )
-      .catch(
-        function (error) {
-          this.result = "GETエラー";
-          console.log(error);
-        }.bind(this)
-      );
-  },
-  computed: {
-    from_language() {
-      return this.$store.state.from_language;
-    },
-    to_language() {
-      return this.$store.state.to_language;
-    },
-  },
   methods: {
-    category_slug_to_id(slug) {
-      const categories = {
-        greetings: 1,
-        airport: 2,
-        change: 3,
-        sightseeing: 4,
-        transportation: 5,
-        hotel: 6,
-        restaurant: 7,
-        shopping: 8,
-        post_telephone: 9,
-        trouble: 10,
-      };
-      return categories[slug];
-    },
-    category_id_to_jpname(id) {
-      const categories = [
-        "dummy",
-        "基本表現",
-        "空港",
-        "両替",
-        "観光",
-        "交通",
-        "宿泊",
-        "食事",
-        "買い物",
-        "郵便・電話",
-        "トラブル",
-      ];
-      return categories[id];
+    toggle_color_mode() {
+      this.$store.commit("toggleColorMode");
     },
   },
+  mounted() {
+    this.$store.watch(
+      (state, getters) => getters.getIsDarkMode,
+      (newValue) => {
+        if (newValue) {
+          console.log("dark mode");
+          document.querySelector("html").classList.add("darkmode")
+        } else {
+          console.log("normal mode");
+          document.querySelector("html").classList.remove("darkmode")
+        }
+      }
+    )
+  },
+  // computed: {
+  //   from_language() {
+  //     return this.$store.state.from_language;
+  //   },
+  //   to_language() {
+  //     return this.$store.state.to_language;
+  //   },
+  // },
 };
 </script>
 

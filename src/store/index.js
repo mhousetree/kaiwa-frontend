@@ -5,18 +5,20 @@ export default createStore({
     from_language: null,
     to_language: null,
     is_muted: null,
+    is_dark_mode: null,
   },
   mutations: {
     init(state) {
       state.from_language = "jp"
       state.to_language = "ru"
       state.is_muted = false
+      state.is_dark_mode = false
     },
     changeLanguage(state, payload) {
-      if (payload.is_native) {
-        state.from_language = payload.changed_language
+      if (payload.target==="from") {
+        state.from_language = payload.lang
       } else {
-        state.to_language = payload.changed_language
+        state.to_language = payload.lang
       }
     },
     swapLanguages(state) {
@@ -26,6 +28,9 @@ export default createStore({
     },
     toggleMute(state) {
       state.is_muted = !state.is_muted
+    },
+    toggleColorMode(state) {
+      state.is_dark_mode = !state.is_dark_mode
     }
   },
   actions: {
@@ -36,6 +41,7 @@ export default createStore({
   getters: {
     getIsMuted: state => state.is_muted,
     getToLanguage: state => state.to_language,
+    getIsDarkMode: state => state.is_dark_mode,
   },
   modules: {},
 });

@@ -11,30 +11,71 @@
       <button class="button_no-bg" @click="toggle_select_from_language">
         <span
           class="flag-icon"
-          v-bind:class="'flag-icon-' + from_language"
+          v-bind:class="'flag-icon-' + flag(from_language)"
         ></span>
         <div id="select_from_language">
-          <span class="flag-icon flag-icon-jp"></span>
+          <span
+            class="flag-icon flag-icon-jp"
+            @click="change_language('from', 'jp')"
+          ></span>
           <span class="flag-icon flag-icon-cn"></span>
           <span class="flag-icon flag-icon-kr"></span>
-          <span class="flag-icon flag-icon-us"></span>
+          <span
+            class="flag-icon flag-icon-gb"
+            @click="change_language('from', 'en')"
+          ></span>
           <span class="flag-icon flag-icon-de"></span>
-          <span class="flag-icon flag-icon-it"></span>
+          <span
+            class="flag-icon flag-icon-it"
+            @click="change_language('from', 'it')"
+          ></span>
           <span class="flag-icon flag-icon-es"></span>
-          <span class="flag-icon flag-icon-fr"></span>
-          <span class="flag-icon flag-icon-ru"></span>
+          <span
+            class="flag-icon flag-icon-fr"
+            @click="change_language('from', 'fr')"
+          ></span>
+          <span
+            class="flag-icon flag-icon-ru"
+            @click="change_language('from', 'ru')"
+          ></span>
           <span class="flag-icon flag-icon-fi"></span>
         </div>
       </button>
       <button @click="swap_language" class="button_no-bg" id="swap">
         <span class="material-icons"> swap_horizontal_circle </span>
-        <!-- {{ to_language }} ↔ {{ from_language }} -->
       </button>
-      <button class="button_no-bg">
+      <button class="button_no-bg" @click="toggle_select_to_language">
         <span
           class="flag-icon"
-          v-bind:class="'flag-icon-' + to_language"
+          v-bind:class="'flag-icon-' + flag(to_language)"
         ></span>
+        <div id="select_to_language">
+          <span
+            class="flag-icon flag-icon-jp"
+            @click="change_language('to', 'jp')"
+          ></span>
+          <span class="flag-icon flag-icon-cn"></span>
+          <span class="flag-icon flag-icon-kr"></span>
+          <span
+            class="flag-icon flag-icon-gb"
+            @click="change_language('to', 'en')"
+          ></span>
+          <span class="flag-icon flag-icon-de"></span>
+          <span
+            class="flag-icon flag-icon-it"
+            @click="change_language('to', 'it')"
+          ></span>
+          <span class="flag-icon flag-icon-es"></span>
+          <span
+            class="flag-icon flag-icon-fr"
+            @click="change_language('to', 'fr')"
+          ></span>
+          <span
+            class="flag-icon flag-icon-ru"
+            @click="change_language('to', 'ru')"
+          ></span>
+          <span class="flag-icon flag-icon-fi"></span>
+        </div>
       </button>
     </div>
   </header>
@@ -42,22 +83,30 @@
   <router-view />
 
   <nav>
-    <router-link to="/">
-      <span v-if="$route.path === '/'" class="material-icons"> home </span>
-      <span v-else class="material-icons-outlined"> home </span>
-    </router-link>
-    <router-link to="/playlist">
-      <span v-if="$route.path === '/playlist'" class="material-icons">
-        star
-      </span>
-      <span v-else class="material-icons"> star_outline </span>
-    </router-link>
-    <router-link to="/settings">
-      <span v-if="$route.path === '/settings'" class="material-icons">
-        settings
-      </span>
-      <span v-else class="material-icons-outlined"> settings </span>
-    </router-link>
+    <ul id="nav">
+      <li>
+        <router-link to="/">
+          <span v-if="$route.path === '/'" class="material-icons"> home </span>
+          <span v-else class="material-icons-outlined"> home </span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/playlist">
+          <span v-if="$route.path === '/playlist'" class="material-icons">
+            star
+          </span>
+          <span v-else class="material-icons-outlined"> grade </span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/settings">
+          <span v-if="$route.path === '/settings'" class="material-icons">
+            settings
+          </span>
+          <span v-else class="material-icons-outlined"> settings </span>
+        </router-link>
+      </li>
+    </ul>
   </nav>
 
   <footer>
@@ -92,10 +141,35 @@ export default {
     },
     toggle_select_from_language() {
       const target = document.getElementById("select_from_language");
+      const closed = document.getElementById("select_to_language");
       if (target.style.display !== "grid") {
         target.style.display = "grid";
+        closed.style.display = "none";
       } else {
         target.style.display = "none";
+      }
+    },
+    toggle_select_to_language() {
+      const target = document.getElementById("select_to_language");
+      const closed = document.getElementById("select_from_language");
+      if (target.style.display !== "grid") {
+        target.style.display = "grid";
+        closed.style.display = "none";
+      } else {
+        target.style.display = "none";
+      }
+    },
+    change_language(target, lang) {
+      this.$store.commit("changeLanguage", {
+        target: target,
+        lang: lang,
+      });
+    },
+    flag(lang) {
+      if (lang === "en") {
+        return "gb";
+      } else {
+        return lang;
       }
     },
   },
@@ -144,6 +218,30 @@ export default {
 :root {
   font-size: 16px;
   background-color: $white;
+  color: $black;
+  transition: 0.3s;
+
+  &.darkmode {
+    background-color: $dark;
+    color: $white;
+
+    header {
+      background-color: rgba($dark, 0.8);
+    }
+
+    footer,
+    nav {
+      background-color: $dark;
+    }
+
+    nav {
+      border-top: 1px solid $grey;
+      .material-icons,
+      .material-icons-outlined {
+        color: #e4ff1a;
+      }
+    }
+  }
 }
 
 #app {
@@ -152,7 +250,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: $black;
 }
 
 @media screen and (min-width: 470px) {
@@ -184,6 +281,8 @@ header {
   justify-content: space-between;
   padding-bottom: 0.8rem;
   align-items: center;
+  transition: 0.3s;
+  z-index: 2;
   a {
     width: min(30%, 150px);
   }
@@ -195,16 +294,16 @@ header {
   button {
     position: relative;
 
-    #select_from_language {
+    #select_from_language,
+    #select_to_language {
       position: fixed;
       z-index: 3;
       padding: 1rem;
       grid-template-columns: repeat(5, 1fr);
       gap: 0.5rem;
-      left: 0;
-      width: 90%;
+      width: 288px;
       bottom: -7.5rem;
-      left: 5%;
+      right: 1rem;
       background-color: $white;
       filter: drop-shadow(0 2px 4px #0003);
       border-radius: 0.3rem;
@@ -214,7 +313,6 @@ header {
         z-index: 2;
         position: fixed;
         top: -1.3rem;
-        right: 31%;
         content: "";
         display: block;
         border-right: 1rem solid transparent;
@@ -222,6 +320,12 @@ header {
         border-bottom: 1.3rem solid $white;
         filter: drop-shadow(0 -1px 1px #0003);
       }
+    }
+    #select_from_language::before {
+      right: 31%;
+    }
+    #select_to_language::before {
+      right: 0.3rem;
     }
   }
   #swap {
@@ -247,19 +351,28 @@ header {
 nav {
   z-index: 2;
   position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 0 2rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 4rem;
   bottom: 0;
   left: 0;
   background-color: $white;
   border-top: 1px solid mix($grey, $white);
+  transition: 0.3s;
+
+  #nav {
+    width: 256px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  }
 
   .material-icons,
   .material-icons-outlined {
+    color: $red;
     font-size: 2rem;
   }
 
