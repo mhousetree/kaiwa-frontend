@@ -17,28 +17,63 @@
           <span
             class="flag-icon flag-icon-jp"
             @click="change_language('from', 'jp')"
+            v-if="to_language != 'jp' && from_language != 'jp'"
           ></span>
-          <span class="flag-icon flag-icon-cn"></span>
-          <span class="flag-icon flag-icon-kr"></span>
+          <span
+            class="flag-icon flag-icon-cn"
+            @click="change_language('from', 'cn')"
+            v-if="to_language != 'cn' && from_language != 'cn'"
+          ></span>
+          <span
+            class="flag-icon flag-icon-kr"
+            @click="change_language('from', 'kr')"
+            v-if="to_language != 'kr' && from_language != 'kr'"
+          ></span>
           <span
             class="flag-icon flag-icon-gb"
             @click="change_language('from', 'en')"
+            v-if="to_language != 'en' && from_language != 'en'"
           ></span>
-          <span class="flag-icon flag-icon-de"></span>
+          <span
+            class="flag-icon flag-icon-de"
+            @click="change_language('from', 'de')"
+            v-if="to_language != 'de' && from_language != 'de'"
+          ></span>
           <span
             class="flag-icon flag-icon-it"
             @click="change_language('from', 'it')"
+            v-if="to_language != 'it' && from_language != 'it'"
           ></span>
-          <span class="flag-icon flag-icon-es"></span>
+          <span
+            class="flag-icon flag-icon-es"
+            @click="change_language('from', 'es')"
+            v-if="to_language != 'es' && from_language != 'es'"
+          ></span>
           <span
             class="flag-icon flag-icon-fr"
             @click="change_language('from', 'fr')"
+            v-if="to_language != 'fr' && from_language != 'fr'"
           ></span>
           <span
             class="flag-icon flag-icon-ru"
             @click="change_language('from', 'ru')"
+            v-if="to_language != 'ru' && from_language != 'ru'"
           ></span>
-          <span class="flag-icon flag-icon-fi"></span>
+          <span
+            class="flag-icon flag-icon-tr"
+            @click="change_language('from', 'tr')"
+            v-if="to_language != 'tr' && from_language != 'tr'"
+          ></span>
+          <span
+            class="flag-icon flag-icon-id"
+            @click="change_language('from', 'idn')"
+            v-if="to_language != 'idn' && from_language != 'idn'"
+          ></span>
+          <span
+            class="flag-icon flag-icon-gr"
+            @click="change_language('from', 'gr')"
+            v-if="to_language != 'gr' && from_language != 'gr'"
+          ></span>
         </div>
       </button>
       <button @click="swap_language" class="button_no-bg" id="swap">
@@ -53,28 +88,63 @@
           <span
             class="flag-icon flag-icon-jp"
             @click="change_language('to', 'jp')"
+            v-if="to_language != 'jp' && from_language != 'jp'"
           ></span>
-          <span class="flag-icon flag-icon-cn"></span>
-          <span class="flag-icon flag-icon-kr"></span>
+          <span
+            class="flag-icon flag-icon-cn"
+            @click="change_language('to', 'cn')"
+            v-if="to_language != 'cn' && from_language != 'cn'"
+          ></span>
+          <span
+            class="flag-icon flag-icon-kr"
+            @click="change_language('to', 'kr')"
+            v-if="to_language != 'kr' && from_language != 'kr'"
+          ></span>
           <span
             class="flag-icon flag-icon-gb"
             @click="change_language('to', 'en')"
+            v-if="to_language != 'en' && from_language != 'en'"
           ></span>
-          <span class="flag-icon flag-icon-de"></span>
+          <span
+            class="flag-icon flag-icon-de"
+            @click="change_language('to', 'de')"
+            v-if="to_language != 'de' && from_language != 'de'"
+          ></span>
           <span
             class="flag-icon flag-icon-it"
             @click="change_language('to', 'it')"
+            v-if="to_language != 'it' && from_language != 'it'"
           ></span>
-          <span class="flag-icon flag-icon-es"></span>
+          <span
+            class="flag-icon flag-icon-es"
+            @click="change_language('to', 'es')"
+            v-if="to_language != 'es' && from_language != 'es'"
+          ></span>
           <span
             class="flag-icon flag-icon-fr"
             @click="change_language('to', 'fr')"
+            v-if="to_language != 'fr' && from_language != 'fr'"
           ></span>
           <span
             class="flag-icon flag-icon-ru"
             @click="change_language('to', 'ru')"
+            v-if="to_language != 'ru' && from_language != 'ru'"
           ></span>
-          <span class="flag-icon flag-icon-fi"></span>
+          <span
+            class="flag-icon flag-icon-tr"
+            @click="change_language('to', 'tr')"
+            v-if="to_language != 'tr' && from_language != 'tr'"
+          ></span>
+          <span
+            class="flag-icon flag-icon-id"
+            @click="change_language('to', 'idn')"
+            v-if="to_language != 'idn' && from_language != 'idn'"
+          ></span>
+          <span
+            class="flag-icon flag-icon-gr"
+            @click="change_language('to', 'gr')"
+            v-if="to_language != 'gr' && from_language != 'gr'"
+          ></span>
         </div>
       </button>
     </div>
@@ -82,7 +152,7 @@
 
   <router-view />
 
-  <nav>
+  <!-- <nav>
     <ul id="nav">
       <li>
         <router-link to="/">
@@ -107,7 +177,7 @@
         </router-link>
       </li>
     </ul>
-  </nav>
+  </nav> -->
 
   <footer>
     <button @click="togglePlayer" class="button_no-bg">
@@ -168,6 +238,8 @@ export default {
     flag(lang) {
       if (lang === "en") {
         return "gb";
+      } else if (lang === "idn") {
+        return "id";
       } else {
         return lang;
       }
@@ -245,7 +317,7 @@ export default {
 }
 
 #app {
-  padding: 5.3rem 1rem 11.5rem;
+  padding: 5.3rem 1rem 7.5rem;
   font-family: kinto-sans, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -391,7 +463,7 @@ footer {
   align-items: center;
   width: 100%;
   left: 0;
-  bottom: 4rem;
+  bottom: 0;
   box-shadow: 0 -2px 3px #0003;
   transition: 0.3s;
   background-color: $white;
@@ -406,7 +478,7 @@ footer {
   }
 
   &.closed {
-    bottom: calc(-70px + 4rem);
+    bottom: calc(-70px);
     button {
       transform: scaleY(-100%);
     }
