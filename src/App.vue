@@ -9,142 +9,142 @@
     </button> -->
     <div id="languages">
       <button class="button_no-bg" @click="toggle_select_from_language">
-        <span
+        <button
           class="flag-icon"
           v-bind:class="'flag-icon-' + flag(from_language)"
-        ></span>
+        ></button>
         <div id="select_from_language">
-          <span
+          <button
             class="flag-icon flag-icon-jp"
             @click="change_language('from', 'jp')"
             v-if="to_language != 'jp' && from_language != 'jp'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-cn"
             @click="change_language('from', 'cn')"
             v-if="to_language != 'cn' && from_language != 'cn'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-kr"
             @click="change_language('from', 'kr')"
             v-if="to_language != 'kr' && from_language != 'kr'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-gb"
             @click="change_language('from', 'en')"
             v-if="to_language != 'en' && from_language != 'en'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-de"
             @click="change_language('from', 'de')"
             v-if="to_language != 'de' && from_language != 'de'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-it"
             @click="change_language('from', 'it')"
             v-if="to_language != 'it' && from_language != 'it'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-es"
             @click="change_language('from', 'es')"
             v-if="to_language != 'es' && from_language != 'es'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-fr"
             @click="change_language('from', 'fr')"
             v-if="to_language != 'fr' && from_language != 'fr'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-ru"
             @click="change_language('from', 'ru')"
             v-if="to_language != 'ru' && from_language != 'ru'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-tr"
             @click="change_language('from', 'tr')"
             v-if="to_language != 'tr' && from_language != 'tr'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-id"
             @click="change_language('from', 'idn')"
             v-if="to_language != 'idn' && from_language != 'idn'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-gr"
             @click="change_language('from', 'gr')"
             v-if="to_language != 'gr' && from_language != 'gr'"
-          ></span>
+          ></button>
         </div>
       </button>
       <button @click="swap_language" class="button_no-bg" id="swap">
         <span class="material-icons"> swap_horizontal_circle </span>
       </button>
       <button class="button_no-bg" @click="toggle_select_to_language">
-        <span
+        <button
           class="flag-icon"
           v-bind:class="'flag-icon-' + flag(to_language)"
-        ></span>
+        ></button>
         <div id="select_to_language">
-          <span
+          <button
             class="flag-icon flag-icon-jp"
             @click="change_language('to', 'jp')"
             v-if="to_language != 'jp' && from_language != 'jp'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-cn"
             @click="change_language('to', 'cn')"
             v-if="to_language != 'cn' && from_language != 'cn'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-kr"
             @click="change_language('to', 'kr')"
             v-if="to_language != 'kr' && from_language != 'kr'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-gb"
             @click="change_language('to', 'en')"
             v-if="to_language != 'en' && from_language != 'en'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-de"
             @click="change_language('to', 'de')"
             v-if="to_language != 'de' && from_language != 'de'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-it"
             @click="change_language('to', 'it')"
             v-if="to_language != 'it' && from_language != 'it'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-es"
             @click="change_language('to', 'es')"
             v-if="to_language != 'es' && from_language != 'es'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-fr"
             @click="change_language('to', 'fr')"
             v-if="to_language != 'fr' && from_language != 'fr'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-ru"
             @click="change_language('to', 'ru')"
             v-if="to_language != 'ru' && from_language != 'ru'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-tr"
             @click="change_language('to', 'tr')"
             v-if="to_language != 'tr' && from_language != 'tr'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-id"
             @click="change_language('to', 'idn')"
             v-if="to_language != 'idn' && from_language != 'idn'"
-          ></span>
-          <span
+          ></button>
+          <button
             class="flag-icon flag-icon-gr"
             @click="change_language('to', 'gr')"
             v-if="to_language != 'gr' && from_language != 'gr'"
-          ></span>
+          ></button>
         </div>
       </button>
     </div>
