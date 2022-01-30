@@ -10,7 +10,7 @@ export default createStore({
   mutations: {
     init(state) {
       state.from_language = "jp"
-      state.to_language = "ru"
+      state.to_language = "es"
       state.is_muted = false
       state.is_dark_mode = false
     },

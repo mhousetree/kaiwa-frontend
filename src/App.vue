@@ -368,8 +368,10 @@ header {
 #languages {
   display: flex;
   align-items: center;
+  overflow:hidden;
   button {
     position: relative;
+    overflow:hidden;
 
     #select_from_language,
     #select_to_language {
