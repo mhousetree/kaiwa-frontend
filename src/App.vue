@@ -210,7 +210,6 @@ export default {
       this.is_player_open = !this.is_player_open;
     },
     toggle_select_from_language() {
-      alert("from")
       const target = document.getElementById("select_from_language");
       const closed = document.getElementById("select_to_language");
       if (target.style.display !== "grid") {
@@ -221,7 +220,6 @@ export default {
       }
     },
     toggle_select_to_language() {
-      alert("to")
       const target = document.getElementById("select_to_language");
       const closed = document.getElementById("select_from_language");
       if (target.style.display !== "grid") {
@@ -326,6 +324,10 @@ export default {
   text-align: center;
 }
 
+button span {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 470px) {
   #app {
     padding-top: 6rem;
@@ -368,10 +370,8 @@ header {
 #languages {
   display: flex;
   align-items: center;
-  overflow:hidden;
   button {
     position: relative;
-    overflow:hidden;
 
     #select_from_language,
     #select_to_language {
@@ -419,6 +419,7 @@ header {
   border: none;
   background-color: transparent;
   color: $grey;
+  cursor: pointer;
 }
 
 .flag-icon {
