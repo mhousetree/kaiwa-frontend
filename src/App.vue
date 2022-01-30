@@ -210,6 +210,7 @@ export default {
       this.is_player_open = !this.is_player_open;
     },
     toggle_select_from_language() {
+      alert("from")
       const target = document.getElementById("select_from_language");
       const closed = document.getElementById("select_to_language");
       if (target.style.display !== "grid") {
@@ -220,6 +221,7 @@ export default {
       }
     },
     toggle_select_to_language() {
+      alert("to")
       const target = document.getElementById("select_to_language");
       const closed = document.getElementById("select_from_language");
       if (target.style.display !== "grid") {
